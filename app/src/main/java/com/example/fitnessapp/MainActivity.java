@@ -35,6 +35,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
+        View.OnClickListener listener1 = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(view == findViewById(R.id.button4)){
+                    System.out.println("fragment1");
+                } else {
+                    System.out.println("fragment2");
+                }
+            }
+        };
+
+
+        Button inputbtn = findViewById(R.id.button4);
+        inputbtn.setOnClickListener(listener1);
 
         Button btn_reg = findViewById(R.id.btn_reg);
         btn_reg.setOnClickListener(listener);
