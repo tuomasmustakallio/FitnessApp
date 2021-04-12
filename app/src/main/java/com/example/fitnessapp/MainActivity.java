@@ -38,12 +38,20 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener listener1 = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Fragment fragment1;
 
                 if(view == findViewById(R.id.button4)){
-                    System.out.println("fragment1");
-                } else {
-                    System.out.println("fragment2");
+                    System.out.println("InputFragment");
+
                 }
+
+                fragment1 = new DataInput();
+
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.screen1,fragment1);
+                transaction.commit();
+
             }
         };
 
