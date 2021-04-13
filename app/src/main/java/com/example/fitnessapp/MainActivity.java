@@ -11,11 +11,18 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    FragmentManager manager = getSupportFragmentManager();
+    FragmentTransaction transaction = manager.beginTransaction();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        System.out.println("test asdfasdfasdfasdf");
+
+        Fragment loginFragment;
+        loginFragment = new LoginFragment();
+
+        transaction.replace(R.id.screen1,loginFragment);
+        transaction.commit();
 
         View.OnClickListener listener = new View.OnClickListener(){
             @Override
@@ -27,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 fragment = new RegisterFragment();
-
-                FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
                 transaction.replace(R.id.screen1,fragment);
                 transaction.commit();
 
@@ -46,9 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 fragment1 = new DataInput();
-
-                FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
                 transaction.replace(R.id.screen1,fragment1);
                 transaction.commit();
 
