@@ -10,15 +10,15 @@
             android:title="Login" />
         <item
             android:id="@+id/nav_register"
-            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:icon="@drawable/ic_baseline_person_add_24"
             android:title="Register" />
         <item
             android:id="@+id/nav_account"
             android:icon="@drawable/ic_baseline_settings_24"
-            android:title="Personal Information" />
+            android:title="User Information" />
         <item
             android:id="@+id/nav_input"
-            android:icon="@drawable/ic_baseline_fitness_center_24_"
+            android:icon="@drawable/ic_baseline_fitness_center_24_black"
             android:title="Set Progress" />
         <item
             android:id="@+id/nav_output"

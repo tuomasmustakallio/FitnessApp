@@ -6,13 +6,26 @@
     android:layout_height="match_parent"
     android:background="@color/cardview_dark_background">
 
+    <TextView
+        android:id="@+id/logintext"
+        android:layout_width="80dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginLeft="164dp"
+        android:layout_marginTop="252dp"
+        android:text="Login"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/inputUsername"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="102dp"
         android:layout_marginLeft="102dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="340dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:background="@drawable/input_bg"
@@ -28,6 +41,7 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,7 +53,7 @@
         android:layout_marginLeft="100dp"
         android:layout_marginEnd="101dp"
         android:layout_marginRight="101dp"
-        android:layout_marginBottom="328dp"
+        android:layout_marginBottom="232dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_security"
         android:drawablePadding="10dp"
@@ -56,6 +70,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="163dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginRight="132dp"
+        android:contentDescription="TODO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_fitness_center_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
