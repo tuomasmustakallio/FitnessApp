@@ -104,12 +104,15 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="338dp"
-        android:layout_height="66dp"
+        android:layout_width="226dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginLeft="95dp"
+        android:layout_marginTop="51dp"
         android:text="User information"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="51dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
