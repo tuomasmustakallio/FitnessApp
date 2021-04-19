@@ -39,7 +39,7 @@ public class Database {
             return height;
     }
 
-    public void setHeight(){
+    public void setHeight(int height){
             this.height = height;
     }
 
@@ -47,7 +47,7 @@ public class Database {
         return weight;
     }
 
-    public void setWeight(){
+    public void setWeight(int weight){
         this.weight = weight;
     }
 
