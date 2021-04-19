@@ -25,6 +25,7 @@ public class LoginFragment extends Fragment {
         etUsername = getView().findViewById(R.id.etUsername);
         etPassword = getView().findViewById(R.id.etPassword);
 
+        /*Refreshes username text*/
         etUsername.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -42,6 +43,7 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        /*Refreshes password text*/
         etPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -66,6 +68,7 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
+    /*onClick for login button which checks if user exists and logs it in through the database*/
     public void tryLogin(){
         //TODO CHECK IF USERNAME LEGIT
         // if  username is not recognized Toast.makeText(getContext(), "Invalid username", Toast.LENGTH_SHORT).show();
