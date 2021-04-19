@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="Login" />
+        <item
+            android:id="@+id/nav_register"
+            android:icon="@drawable/ic_baseline_person_add_24"
+            android:title="Register" />
+        <item
+            android:id="@+id/nav_account"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="User Information" />
+        <item
+            android:id="@+id/nav_input"
+            android:icon="@drawable/ic_baseline_fitness_center_24_black"
+            android:title="Set Progress" />
+        <item
+            android:id="@+id/nav_output"
+            android:icon="@drawable/ic_baseline_align_vertical_bottom_24"
+            android:title="View Progress" />
+    </group>
+</menu>
