@@ -67,7 +67,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<Database> getAllDatabases(){
         List<Database> databaseList = new ArrayList<>();
 
-        String selectQuery = "SELECT FROM" + TABLE_DATABASE;
+        String selectQuery = "SELECT *FROM " + TABLE_DATABASE;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery,null);
@@ -86,4 +86,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return databaseList;
     }
 
+    public int updateDatabase(Database database){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_AGE, database.getAge());
+        values.put(KEY_GENDER, database.getGender());
+        values.put(KEY_HEIGHT, database.getHeight());
+        values.put(KEY_WEIGHT, database.getWeight());
+
+        return db.update(TABLE_DATABASE, values, KEY_AGE+"=?", new String[]{String.valueOf(database.getAge())});
+    }
+
+    public void deleteDatabase(Database database){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_DATABASE,KEY_AGE+"=?", new String[] {String.valueOf(database.getAge())});
+        db.close();
+    }
+
+    public int getDatabaseCount(){
+        String countQuery = "SELECT *FROM " + TABLE_DATABASE;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        cursor.close();
+
+        return cursor.getCount();
+    }
 }
