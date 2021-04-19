@@ -17,16 +17,14 @@ public class RegisterFragment extends Fragment {
     EditText etUsername, etEmail, etPassword;
 
     @Nullable
-    @Override
-    public View onCreateView((@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setContentView(R.layout.fragment_register);
-        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
-        final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-        final EditText etEmail = (EditText) findViewById(R.id.etEmail);
-
-        final Button bRegister = (Button) findViedById(R.id.bRegister);
-        bRegister.setOnClickListener(this);
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        final EditText etPassword = (EditText) getView().findViewById(R.id.etPassword);
+        final EditText etUsername = (EditText) getView().findViewById(R.id.etUsername);
+        final EditText etEmail = (EditText) getView().findViewById(R.id.etEmail);
+        System.out.println(etPassword);
+        final Button bRegister = (Button) getView().findViewById(R.id.bRegister);
+        bRegister.setOnClickListener((View.OnClickListener) this);
+        return inflater.inflate(R.layout.fragment_register, view, false);
     }
 }
