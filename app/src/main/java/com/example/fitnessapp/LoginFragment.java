@@ -22,6 +22,12 @@ public class LoginFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.login_layout, container, false);
+    }
+
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         etUsername = getView().findViewById(R.id.etUsername);
         etPassword = getView().findViewById(R.id.etPassword);
 
@@ -61,11 +67,6 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        return inflater.inflate(R.layout.login_layout, container, false);
-    }
-
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 
     /*onClick for login button which checks if user exists and logs it in through the database*/
