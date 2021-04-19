@@ -112,4 +112,21 @@
         tools:layout_editor_absoluteX="95dp"
         tools:layout_editor_absoluteY="51dp" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="172dp"
+        android:layout_marginRight="172dp"
+        android:background="@drawable/input_bg"
+        android:text="Submit"
+        app:backgroundTint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextHeight" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
