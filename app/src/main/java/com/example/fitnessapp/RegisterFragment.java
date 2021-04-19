@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class RegisterFragment extends Fragment {
+/*public class RegisterFragment extends Fragment {
 
     Button bRegister;
     EditText etUsername, etEmail, etPassword;
@@ -29,4 +29,4 @@ public class RegisterFragment extends Fragment {
         bRegister.setOnClickListener(this);
         return inflater.inflate(R.layout.fragment_register, container, false);
     }
-}
+}*/
