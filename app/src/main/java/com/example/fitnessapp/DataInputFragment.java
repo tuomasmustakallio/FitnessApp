@@ -81,7 +81,6 @@ public class DataInputFragment extends Fragment {
 
 
     public void submitInfo(){
-        Person createdPerson = new Person(i++, Integer.parseInt(age), gender, Integer.parseInt(height), Integer.parseInt(weight));
-
+        //TODO ADD INFO TO CREATED USER
     }
 }
