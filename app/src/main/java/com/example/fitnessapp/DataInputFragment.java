@@ -6,7 +6,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -14,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 
-public class DataInput extends Fragment {
+public class DataInputFragment extends Fragment {
 
 
     EditText editTextAge;
@@ -23,14 +22,12 @@ public class DataInput extends Fragment {
     EditText editTextWeight;
 
     String age,gender,height,weight;
-
-    Button submitButton;
+    int i=0;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.datainput, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.datainput_layout, container, false);
 
     }
 
@@ -41,9 +38,6 @@ public class DataInput extends Fragment {
         editTextGender = (EditText) getView().findViewById(R.id.editTextGender);
         editTextHeight = (EditText) getView().findViewById(R.id.editTextHeight);
         editTextWeight = (EditText) getView().findViewById(R.id.editTextWeight);
-
-        submitButton = (Button) getView().findViewById(R.id.submitButton);
-
 
         /* Refreshes text on age*/
         editTextAge.addTextChangedListener(new TextWatcher() {
@@ -86,17 +80,8 @@ public class DataInput extends Fragment {
     }
 
 
-    public static void main( String[] args) {
-        try {
-            Database database = new Database();
+    public void submitInfo(){
+        Person createdPerson = new Person(i++, Integer.parseInt(age), gender, Integer.parseInt(height), Integer.parseInt(weight));
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
-/*
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    } */
 }

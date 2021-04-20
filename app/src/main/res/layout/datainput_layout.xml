@@ -65,7 +65,7 @@
         android:drawableLeft="@drawable/ic_baseline_fitness_center_24"
         android:drawablePadding="10dp"
         android:hint="Weight"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:textColorHint="#F6F6F6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextWeight"

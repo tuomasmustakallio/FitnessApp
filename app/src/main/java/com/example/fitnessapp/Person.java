@@ -1,6 +1,6 @@
 package com.example.fitnessapp;
 
-public class Database {
+public class Person {
 
     int id;
     int age;
@@ -9,11 +9,11 @@ public class Database {
     int weight;
 
 
-    public Database(){
+    public Person(){
 
     }
 
-    public Database(int id,int age, String gender, int height, int weight){
+    public Person(int id, int age, String gender, int height, int weight){
         this.id = id;
         this.age = age;
         this.gender = gender;
