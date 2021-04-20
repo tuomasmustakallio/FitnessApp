@@ -2,6 +2,7 @@ package com.example.fitnessapp;
 
 public class Database {
 
+    int id;
     int age;
     String gender;
     int height;
@@ -11,12 +12,21 @@ public class Database {
 
     }
 
-    public Database(int age, String gender, int height, int weight){
+    public Database(int id,int age, String gender, int height, int weight){
+        this.id = id;
         this.age = age;
         this.gender = gender;
         this.height = height;
         this.weight = weight;
 
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     public int getAge(){
