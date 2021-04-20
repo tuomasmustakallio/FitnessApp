@@ -1,6 +1,6 @@
 package com.example.fitnessapp;
 
-import android.os.Bundle;
+/*import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,4 +27,4 @@ public class RegisterFragment extends Fragment {
         bRegister.setOnClickListener((View.OnClickListener) this);
         return inflater.inflate(R.layout.fragment_register, view, false);
     }
-}
+}*/
