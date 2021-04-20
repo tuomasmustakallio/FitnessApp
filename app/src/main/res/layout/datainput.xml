@@ -19,7 +19,7 @@
         android:drawableLeft="@drawable/ic_baseline_elderly_24"
         android:drawablePadding="10dp"
         android:hint="Age"
-        android:inputType="text"
+        android:inputType="number"
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -65,7 +65,7 @@
         android:drawableLeft="@drawable/ic_baseline_fitness_center_24"
         android:drawablePadding="10dp"
         android:hint="Weight"
-        android:inputType="text"
+        android:inputType="numberDecimal"
         android:textColorHint="#F6F6F6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextWeight"
@@ -90,7 +90,7 @@
         android:drawableLeft="@drawable/ic_baseline_height_24"
         android:drawablePadding="10dp"
         android:hint="Height"
-        android:inputType="text"
+        android:inputType="number"
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextGender"
@@ -116,7 +116,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
