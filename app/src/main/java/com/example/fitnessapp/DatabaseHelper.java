@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+/*public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "databaseManager";
@@ -114,4 +114,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return cursor.getCount();
     }
-}
+}*/

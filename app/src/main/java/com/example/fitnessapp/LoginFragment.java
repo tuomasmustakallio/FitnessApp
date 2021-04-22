@@ -6,6 +6,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -13,13 +14,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import static com.example.fitnessapp.DatabaseManager.checkLogin;
+import static com.example.fitnessapp.DatabaseManager.createNewAccount;
+import static com.example.fitnessapp.PasswordManager.checkPassword;
+import static com.example.fitnessapp.PasswordManager.passwordRules;
 
-public class LoginFragment extends Fragment {
+
+public class LoginFragment extends Fragment implements View.OnClickListener {
 
     EditText etUsername, etPassword;
-    String username, password;
+    String username, password = " ";
 
-    @Nullable
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.login_layout, container, false);
@@ -27,6 +33,9 @@ public class LoginFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Button loginBtn = getView().findViewById(R.id.btnLogin);
+        loginBtn.setOnClickListener(this);
 
         etUsername = getView().findViewById(R.id.etUsername);
         etPassword = getView().findViewById(R.id.etPassword);
@@ -49,13 +58,23 @@ public class LoginFragment extends Fragment {
             }@Override public void afterTextChanged(Editable s) {}
         });
 
+
     }
 
     /*onClick for login button which checks if user exists and logs it in through the database*/
-    public void tryLogin(){
-        //TODO CHECK IF USERNAME LEGIT
-        // if  username is not recognized Toast.makeText(getContext(), "Invalid username", Toast.LENGTH_SHORT).show();
-        //TODO CHECK IF PASSWORD MATHCES WITH checkPassword(username, password) == true
-        // if  password is not recognized Toast.makeText(getContext(), "Invalid password", Toast.LENGTH_SHORT).show();
+    public void onClick(View v){
+
+        if (!checkLogin(username)){
+            if (passwordRules(password)){
+                createNewAccount(username, password);
+                Toast.makeText(getContext(), "Account created", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getContext(), "Bad password", Toast.LENGTH_SHORT).show();
+            }
+        }else if(checkPassword(username, password)){
+            //user login
+        }else{
+            Toast.makeText(getContext(), "Invalid password", Toast.LENGTH_SHORT).show();
+        }
     }
 }

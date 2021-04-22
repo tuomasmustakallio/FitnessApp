@@ -2,19 +2,19 @@ package com.example.fitnessapp;
 
 public class Person {
 
-    int id;
-    int age;
-    String gender;
-    int height;
-    int weight;
+    String username;
+    String password;
+    int age = 0;
+    String gender = "";
+    int height = 0;
+    int weight = 0;
 
 
     public Person(){
 
     }
 
-    public Person(int id, int age, String gender, int height, int weight){
-        this.id = id;
+    public Person(int age, String gender, int height, int weight){
         this.age = age;
         this.gender = gender;
         this.height = height;
@@ -22,12 +22,16 @@ public class Person {
 
     }
 
-    public int getId(){
-        return id;
+    public String getPassword(){
+        return password;
+    }
+    public void setPassword(String password){
+        this.password = password;
     }
 
-    public void setId(int id){
-        this.id = id;
+    public String getUsername(){return username;}
+    public void setUsername(String username){
+        this.username = username;
     }
 
     public int getAge(){
