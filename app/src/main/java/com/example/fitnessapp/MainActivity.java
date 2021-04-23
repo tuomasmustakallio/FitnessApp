@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DataInputFragment()).commit();
                 break;
             case R.id.nav_input:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DataInputFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WeightStatisticsfragment()).commit();
                 //TODO ADD PROGRESS INPUT
                 break;
             case R.id.nav_output:
