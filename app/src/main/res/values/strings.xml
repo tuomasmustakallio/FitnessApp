@@ -6,7 +6,7 @@
     
     <string-array name="names">
         <item>Squats</item>
-        <item>BenchPress</item>
+        <item>Bench Press</item>
         <item>Deadlift</item>
     </string-array>
 </resources>
