@@ -45,6 +45,7 @@ public class DatabaseManager{
             StringWriter writer = new StringWriter();
             xmlSerializer.setOutput(writer);
             xmlSerializer.startDocument("UTF-8", true);
+            xmlSerializer.startTag(null, "people");
             xmlSerializer.startTag(null, "person");
             xmlSerializer.startTag(null, "username");
             xmlSerializer.text(username);
@@ -53,6 +54,7 @@ public class DatabaseManager{
             xmlSerializer.text(pass);
             xmlSerializer.endTag(null, "password");
             xmlSerializer.endTag(null, "person");
+            xmlSerializer.startTag(null, "people");
             xmlSerializer.endDocument();
             xmlSerializer.flush();
             String dataWrite = writer.toString();
