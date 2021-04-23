@@ -46,9 +46,9 @@ public class DatabaseManager{
             xmlSerializer.setOutput(writer);
             xmlSerializer.startDocument("UTF-8", true);
             xmlSerializer.startTag(null, "person");
-            xmlSerializer.startTag(null, "userName");
+            xmlSerializer.startTag(null, "username");
             xmlSerializer.text(username);
-            xmlSerializer.endTag(null, "userName");
+            xmlSerializer.endTag(null, "username");
             xmlSerializer.startTag(null, "password");
             xmlSerializer.text(pass);
             xmlSerializer.endTag(null, "password");
@@ -77,5 +77,6 @@ public class DatabaseManager{
 
     public static boolean checkLogin(Context context, String username) {
         final String xmlFile = "data";
+        return false;
     }
 }
