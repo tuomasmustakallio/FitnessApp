@@ -7,27 +7,27 @@
     android:background="@color/cardview_dark_background">
 
     <EditText
-        android:id="@+id/editTextWeight2"
+        android:id="@+id/editTextReps"
         android:layout_width="345dp"
         android:layout_height="49dp"
         android:layout_marginTop="52dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_baseline_fitness_center_24"
         android:drawablePadding="10dp"
-        android:hint="Weight"
+        android:hint="Reps"
         android:inputType="number"
         android:textColor="#FBFBFB"
         android:textColorHint="#F6F6F6"
-        app:layout_constraintEnd_toEndOf="@+id/editTextHeight2"
+        app:layout_constraintEnd_toEndOf="@+id/editTextWeight2"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextHeight2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextHeight2">
+        app:layout_constraintStart_toStartOf="@+id/editTextWeight2"
+        app:layout_constraintTop_toBottomOf="@+id/editTextWeight2">
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/editTextHeight2"
+        android:id="@+id/editTextWeight2"
         android:layout_width="347dp"
         android:layout_height="47dp"
 
@@ -35,7 +35,7 @@
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_baseline_height_24"
         android:drawablePadding="10dp"
-        android:hint="Height"
+        android:hint="Weight"
         android:inputType="number"
         android:textColor="#EDE7E7"
         android:textColorHint="#FFFFFF"
