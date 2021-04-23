@@ -1,5 +1,6 @@
 package com.example.fitnessapp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -24,10 +25,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     EditText etUsername, etPassword;
     String username, password = " ";
+    Context context;
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        context = container.getContext();
         return inflater.inflate(R.layout.login_layout, container, false);
     }
 
@@ -63,14 +66,18 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     /*onClick for login button which checks if user exists and logs it in through the database*/
     public void onClick(View v){
-
-        if (!checkLogin(username)){
-            if (passwordRules(password)){
+        String path = context.getFilesDir().getAbsolutePath();
+        System.out.println(username);
+        if (!checkLogin(context, username)){
+            createNewAccount(context, username, password);
+            Toast.makeText(getContext(), "Account created", Toast.LENGTH_SHORT).show();
+            /*if (passwordRules(password)){
                 createNewAccount(username, password);
                 Toast.makeText(getContext(), "Account created", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(getContext(), "Bad password", Toast.LENGTH_SHORT).show();
-            }
+            }*/
+            //TODO PASSWORD CHECK REMOVED DURING TESTING
         }else if(checkPassword(username, password)){
             //user login
         }else{

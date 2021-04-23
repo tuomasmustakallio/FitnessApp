@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<people>
+    <person>
+        <name>jukka</name>
+        <password>5823</password>
+        <age></age>
+        <gender></gender>
+        <height></height>
+        <weight></weight>
+    </person>
+    <person>
+        <name>roni</name>
+        <password>1353</password>
+        <age></age>
+        <gender></gender>
+        <height></height>
+        <weight></weight>
+    </person>
+    <person>
+        <name>emilia</name>
+        <password>5432</password>
+        <age></age>
+        <gender></gender>
+        <height></height>
+        <weight></weight>
+    </person>
+    <person>
+        <name>sami</name>
+        <password>53153</password>
+        <age></age>
+        <gender></gender>
+        <height></height>
+        <weight></weight>
+    </person>
+</people>
