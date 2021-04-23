@@ -28,5 +28,7 @@ public class WeightStatisticsfragment extends Fragment {
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this.context,
                 android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.names));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        weightSpinner.setAdapter(myAdapter);
     }
 }
