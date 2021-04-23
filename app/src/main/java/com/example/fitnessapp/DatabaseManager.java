@@ -2,6 +2,7 @@ package com.example.fitnessapp;
 
 import android.content.Context;
 import android.util.Xml;
+import android.widget.ArrayAdapter;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -22,6 +23,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -45,6 +47,7 @@ public class DatabaseManager{
             StringWriter writer = new StringWriter();
             xmlSerializer.setOutput(writer);
             xmlSerializer.startDocument("UTF-8", true);
+            xmlSerializer.startTag(null, "people");
             xmlSerializer.startTag(null, "person");
             xmlSerializer.startTag(null, "username");
             xmlSerializer.text(username);
@@ -53,6 +56,7 @@ public class DatabaseManager{
             xmlSerializer.text(pass);
             xmlSerializer.endTag(null, "password");
             xmlSerializer.endTag(null, "person");
+            xmlSerializer.endTag(null, "people");
             xmlSerializer.endDocument();
             xmlSerializer.flush();
             String dataWrite = writer.toString();
@@ -76,7 +80,63 @@ public class DatabaseManager{
     }
 
     public static boolean checkLogin(Context context, String username) {
-        final String xmlFile = "data";
+        XmlPullParserFactory parserFactory;
+        try {
+            parserFactory = XmlPullParserFactory.newInstance();
+            XmlPullParser parser = parserFactory.newPullParser();
+            InputStream is = context.openFileInput("data.xml");
+            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+            parser.setInput(is, null);
+
+            processParsing(parser);
+
+        } catch(XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
         return false;
+    }
+
+    private static void processParsing(XmlPullParser parser){
+        ArrayList<Person> users = new ArrayList<>();
+        int eventType = 0;
+        try {
+            eventType = parser.getEventType();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
+        Person currentUser = null;
+
+        while (eventType != XmlPullParser.END_DOCUMENT){
+            String eltName = null;
+
+            if (eventType == XmlPullParser.START_DOCUMENT) {
+                eltName = parser.getName();
+                if ("person".equals(eltName)) {
+                    currentUser = new Person();
+                } else if (currentUser != null) {
+                    if ("name".equals(eltName)) {
+                        try {
+                            currentUser.username = parser.nextText();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (XmlPullParserException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+            try {
+                eventType = parser.next();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (XmlPullParserException e) {
+                e.printStackTrace();
+            }
+        }
+        for (Person user : users){
+            System.out.println(user.username);
+        }
     }
 }
