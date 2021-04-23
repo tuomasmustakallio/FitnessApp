@@ -1,11 +1,13 @@
 package com.example.fitnessapp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -15,7 +17,7 @@ import androidx.fragment.app.Fragment;
 
 public class DataInputFragment extends Fragment {
 
-
+    Context context;
     EditText editTextAge;
     EditText editTextGender;
     EditText editTextHeight;
@@ -27,12 +29,16 @@ public class DataInputFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        context = container.getContext();
         return inflater.inflate(R.layout.datainput_layout, container, false);
 
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Button loginBtn = getView().findViewById(R.id.btnLogin);
+        loginBtn.setOnClickListener(this::onClick);
 
         editTextAge = (EditText) getView().findViewById(R.id.editTextAge);
         editTextGender = (EditText) getView().findViewById(R.id.editTextGender);
@@ -80,7 +86,7 @@ public class DataInputFragment extends Fragment {
     }
 
 
-    public void submitInfo(){
+    public void onClick(View v){
         //TODO ADD INFO TO CREATED USER
     }
 }
