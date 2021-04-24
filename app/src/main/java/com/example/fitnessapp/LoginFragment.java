@@ -1,6 +1,7 @@
 package com.example.fitnessapp;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
@@ -68,6 +70,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
     /*onClick for login button which checks if user exists and logs it in through the database*/
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void onClick(View v){
         String path = context.getFilesDir().getAbsolutePath();
         System.out.println(username);
@@ -82,7 +85,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getContext(), "Bad password", Toast.LENGTH_SHORT).show();
             }*/
             //TODO PASSWORD CHECK REMOVED DURING TESTING
-        }else if(checkPassword(username, password)){
+        }else if(checkPassword(context, username, password)){
             Toast.makeText(getContext(), "Logged in", Toast.LENGTH_SHORT).show();
             //user login
         }else{

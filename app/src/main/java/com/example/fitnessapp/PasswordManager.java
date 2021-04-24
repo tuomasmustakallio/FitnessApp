@@ -1,12 +1,24 @@
 package com.example.fitnessapp;
 
+import android.content.Context;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -55,28 +67,49 @@ public class PasswordManager {
     }
 
     /*Compares the given password to the users hash protected password to see if the integers match*/
-    public static boolean checkPassword(String username, String password) {
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static boolean checkPassword(Context context, String username, String password) {
+        int s = password.hashCode();
+        String pass = Integer.toString(s);
+        System.out.println("made it");
         try {
-            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document doc = builder.parse("app/src/main/res/data.xml");
-            doc.getDocumentElement().normalize();
-            NodeList nList = doc.getDocumentElement().getElementsByTagName("person");
-            for (int i = 0; i < nList.getLength(); i++) {
+            FileInputStream fis = null;
+            InputStreamReader isr = null;
+            String path = context.getFilesDir().getAbsolutePath();
+            fis = context.openFileInput(path + "/data.xml");
+            isr = new InputStreamReader(fis);
+            char[] inputBuffer = new char[fis.available()];
+            isr.read(inputBuffer);
+            String data = new String(inputBuffer);
+            isr.close();
+            fis.close();
+            InputStream is = new ByteArrayInputStream(data.getBytes(StandardCharsets.UTF_8));
+            ArrayList<String> xmlDataList = new ArrayList<String>();
+            DocumentBuilderFactory dbf;
+            DocumentBuilder db;
+            NodeList items = null;
+            Document dom;
+            dbf = DocumentBuilderFactory.newInstance();
+            db = dbf.newDocumentBuilder();
+            dom = db.parse(is);
+            dom.getDocumentElement().normalize();
+            NodeList nList = dom.getDocumentElement().getElementsByTagName("person");
+            for (int i = 0; i < nList.getLength(); i++){
                 Node node = nList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
-                    if (element.getElementsByTagName("username").item(0).getTextContent().equals(username)) {
-                        if (element.getElementsByTagName("password").item(0).getTextContent().equals(password.hashCode())) {
-                            return true;
-                        }
+                    if (element.getElementsByTagName("username").item(0).getTextContent().equals(username)){
+                        return element.getElementsByTagName("password").item(0).getTextContent().equals(pass);
                     }
                 }
             }
+        }catch  (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
         return false;
