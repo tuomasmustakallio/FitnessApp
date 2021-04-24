@@ -137,7 +137,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <android.suppport.v4.widget.Nested.Scroll.View
+    <androidx.core.widget.NestedScrollView
         android:layout_width="320dp"
         android:layout_height="162dp"
         app:layout_constraintBottom_toTopOf="@+id/submitButton"
@@ -157,6 +157,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.686" />
 
-    </android.suppport.v4.widget.Nested.Scroll.View>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

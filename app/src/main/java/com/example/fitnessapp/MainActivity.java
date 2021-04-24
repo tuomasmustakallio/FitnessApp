@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
 
-        textViewResult = findViewById(R.id.text_view_result);
+        /*textViewResult = findViewById(R.id.text_view_result);
 
         //EXECUTE GET REQUEST
         Retrofit retrofit = new Retrofit.Builder()
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onFailure(Call<List<Post>> call, Throwable t) {
 
             }
-        });
+        });*/
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LoginFragment()).commit();
