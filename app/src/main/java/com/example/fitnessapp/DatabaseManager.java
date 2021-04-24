@@ -171,11 +171,10 @@ public class DatabaseManager{
     /*Checks if user exists in user database data.xml*/
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static boolean checkLogin(Context context, String username) {
-        String path = context.getFilesDir().getAbsolutePath();
         try {
             FileInputStream fis = null;
             InputStreamReader isr = null;
-            fis = context.openFileInput(path + "data.xml");
+            fis = context.openFileInput( "data.xml");
             isr = new InputStreamReader(fis);
             char[] inputBuffer = new char[fis.available()];
             isr.read(inputBuffer);
