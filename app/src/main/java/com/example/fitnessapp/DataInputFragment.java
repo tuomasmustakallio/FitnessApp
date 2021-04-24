@@ -55,8 +55,8 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button loginBtn = getView().findViewById(R.id.btnLogin);
-        loginBtn.setOnClickListener(this);
+        Button submitButton = getView().findViewById(R.id.submitButton);
+        submitButton.setOnClickListener(this);
 
         editTextAge = (EditText) getView().findViewById(R.id.editTextAge);
         editTextGender = (EditText) getView().findViewById(R.id.editTextGender);
@@ -101,10 +101,10 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
 
         /*Receive info from DatabaseManager (In progress)*/
         try {
-            String username = getArguments().getString("username");
+            username = getArguments().getString("username", null);
             System.out.println(username);
         }   catch (Exception e){
-            System.out.println("Voihan fakkista");
+            System.out.println("ei saatu");
         }
     }
 

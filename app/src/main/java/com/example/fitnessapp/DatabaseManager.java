@@ -115,7 +115,7 @@ public class DatabaseManager{
     }
 
     public static void setUserInfo(Context context, Person person, String username){
-
+        username = "joo";
         String path = context.getFilesDir().getAbsolutePath();
         File xmlFile = new File(path + "/data.xml");
 
@@ -130,22 +130,23 @@ public class DatabaseManager{
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element user = (Element) node;
                     if (user.getElementsByTagName("username").item(0).getTextContent().equals(username)) {
-                        Element age = doc.createElement("age");
-                        age.appendChild(doc.createTextNode(person.getAge()));
-                        user.appendChild(age);
-
-                        Element gender = doc.createElement("gender");
-                        gender.appendChild(doc.createTextNode(person.getGender()));
-                        user.appendChild(gender);
-
-                        Element height = doc.createElement("height");
-                        height.appendChild(doc.createTextNode(person.getHeight()));
-                        user.appendChild(height);
-
-                        Element weight = doc.createElement("weight");
-                        height.appendChild(doc.createTextNode(person.getWeight()));
-                        user.appendChild(weight);
-
+                        if() {
+                            Element age = doc.createElement("age");
+                            age.appendChild(doc.createTextNode(person.getAge()));
+                            user.appendChild(age);
+                        }if() {
+                            Element gender = doc.createElement("gender");
+                            gender.appendChild(doc.createTextNode(person.getGender()));
+                            user.appendChild(gender);
+                        }if() {
+                            Element height = doc.createElement("height");
+                            height.appendChild(doc.createTextNode(person.getHeight()));
+                            user.appendChild(height);
+                        }if() {
+                            Element weight = doc.createElement("weight");
+                            weight.appendChild(doc.createTextNode(person.getWeight()));
+                            user.appendChild(weight);
+                        }
                         DOMSource source = new DOMSource(doc);
 
                         TransformerFactory transformerFactory = TransformerFactory.newInstance();

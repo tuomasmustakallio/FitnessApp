@@ -20,6 +20,7 @@
         android:drawablePadding="10dp"
         android:hint="Age"
         android:inputType="number"
+        android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -42,13 +43,14 @@
         android:drawablePadding="10dp"
         android:hint="Gender"
         android:inputType="text"
+        android:textColor="#FFFFFF"
         android:textColorHint="#F8F7F7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextAge"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.295">
+        app:layout_constraintVertical_bias="0.318">
 
         <requestFocus />
     </EditText>
@@ -66,6 +68,7 @@
         android:drawablePadding="10dp"
         android:hint="Weight"
         android:inputType="number"
+        android:textColor="#FFFFFF"
         android:textColorHint="#F6F6F6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextWeight"
@@ -91,6 +94,7 @@
         android:drawablePadding="10dp"
         android:hint="Height"
         android:inputType="number"
+        android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextGender"
@@ -121,15 +125,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="140dp"
         android:layout_marginEnd="172dp"
         android:layout_marginRight="172dp"
+        android:layout_marginBottom="136dp"
         android:background="@drawable/input_bg"
         android:text="Submit"
+        android:textColor="#FFFFFF"
         app:backgroundTint="@color/black"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextHeight" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
