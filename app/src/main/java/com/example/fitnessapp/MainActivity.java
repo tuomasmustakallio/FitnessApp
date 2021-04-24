@@ -7,25 +7,14 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
 
-    private TextView textViewResult;
 
     DataInputFragment dataInputFragment = new DataInputFragment();
 
@@ -53,50 +42,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-
-        /*textViewResult = findViewById(R.id.text_view_result);
-
-        //EXECUTE GET REQUEST
-        Retrofit retrofit = new Retrofit.Builder()
-                //METHOD TO GET BASE  URL
-                .baseUrl("https://jsonplaceholder.typicode.com/")
-                //DEFINE GSON USAGE
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-
-        //INITIALIZE EXECUTE
-        Call<List<Post>> call = jsonPlaceHolderApi.getPosts();
-
-        //EXECUTE BACKGROUND
-        call.enqueue(new Callback<List<Post>>() {
-            @Override
-            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-
-                if (!response.isSuccessful()){
-                    textViewResult.setText("Code: "+ response.code());
-                    return;
-                }
-
-                List<Post> posts = response.body();
-
-                for (Post post : posts){
-                    String content = "";
-                    content += "ID: " + post.getId() + "\n";
-                    content += "User ID: " + post.getUserId() + "\n";
-                    content += "Title: " + post.getTitle() + "\n";
-                    content += "Text: " + post.getText() + "\n";
-
-                    textViewResult.append(content);
-                }
-            }
-            @Override
-            public void onFailure(Call<List<Post>> call, Throwable t) {
-
-            }
-        });*/
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LoginFragment()).commit();
