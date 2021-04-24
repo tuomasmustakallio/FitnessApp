@@ -40,6 +40,7 @@ import static com.example.fitnessapp.PasswordManager.hashPassword;
 
 public class DatabaseManager{
 
+    /*Creates an account to data.xml*/
     public static void createNewAccount(Context context, String username, String password){
         String path = context.getFilesDir().getAbsolutePath();
         int secrets = hashPassword(password);
@@ -47,6 +48,7 @@ public class DatabaseManager{
         String xml = "data.xml";
         File xmlFile = new File(path + "/data.xml");
         FileOutputStream fos;
+        /*If file already exists adds a new person element to database*/
         if(xmlFile.exists()) {
             try {
                 DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -84,6 +86,7 @@ public class DatabaseManager{
                 e.printStackTrace();
             }
         }
+        /*If file doesn't exist creates the database and adds the core elements*/
         else{
             try {
                 fos = context.openFileOutput(xml, Context.MODE_PRIVATE);
@@ -114,6 +117,7 @@ public class DatabaseManager{
     public static void setUserInfo(){
     }
 
+    /*Checks if user exists in user database data.xml*/
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static boolean checkLogin(Context context, String username) {
         try {
@@ -153,14 +157,6 @@ public class DatabaseManager{
         } catch (SAXException e) {
             e.printStackTrace();
         }
-
-        /*Send info to DataInputFragment*/
-        Bundle bundle = new Bundle();
-        bundle.putString("key", "value");
-        DataInputFragment dataInputFragment = new DataInputFragment();
-        dataInputFragment.setArguments(bundle);
-        //
-
         return false;
     }
 }

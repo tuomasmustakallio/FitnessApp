@@ -86,6 +86,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         }else if(checkPassword(context, username, password)){
             //user login
             Toast.makeText(getContext(), "Logged in", Toast.LENGTH_SHORT).show();
+            /*Send info to DataInputFragment*/
+            Bundle bundle = new Bundle();
+            bundle.putString(username, null);
+            DataInputFragment dataInputFragment = new DataInputFragment();
+            dataInputFragment.setArguments(bundle);
         }else{
             Toast.makeText(getContext(), "Invalid password", Toast.LENGTH_SHORT).show();
         }
