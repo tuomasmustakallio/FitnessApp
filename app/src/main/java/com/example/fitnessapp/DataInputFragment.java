@@ -132,10 +132,6 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
 
         NodeList nList = document.getDocumentElement().getElementsByTagName("person");
 
-        for (int i =0; i< nList.getLength() ; i++){
-            Node node =nList.item(i);
-
-        }
 
 
 
