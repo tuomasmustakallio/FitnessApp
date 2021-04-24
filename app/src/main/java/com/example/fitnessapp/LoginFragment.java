@@ -9,11 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.material.navigation.NavigationView;
 
 import static com.example.fitnessapp.DatabaseManager.checkLogin;
 import static com.example.fitnessapp.DatabaseManager.createNewAccount;
@@ -71,6 +74,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         if (!checkLogin(context, username)){
             createNewAccount(context, username, password);
             Toast.makeText(getContext(), "Account created", Toast.LENGTH_SHORT).show();
+
             /*if (passwordRules(password)){
                 createNewAccount(username, password);
                 Toast.makeText(getContext(), "Account created", Toast.LENGTH_SHORT).show();
@@ -79,6 +83,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             }*/
             //TODO PASSWORD CHECK REMOVED DURING TESTING
         }else if(checkPassword(username, password)){
+            Toast.makeText(getContext(), "Logged in", Toast.LENGTH_SHORT).show();
             //user login
         }else{
             Toast.makeText(getContext(), "Invalid password", Toast.LENGTH_SHORT).show();
