@@ -103,9 +103,8 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
             String arg = getArguments().getString("username");
             System.out.println(arg);
         }   catch (Exception e){
+            System.out.println("Voihan fakkista");
         }
-
-
     }
 
 
@@ -127,13 +126,31 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
             e.printStackTrace();
         }
         Element root = document.getDocumentElement();
+        Collection<people> persons = new ArrayList<Person>;
+        persons.add(new people());
+
+        Element newPerson = document.createElement("person");
+
+        Element age = document.createElement("age");
+        age.appendChild(document.createTextNode(Integer.toString(person.getAge())));
+        newPerson.appendChild(age);
+
+        Element gender = document.createElement("gender");
+        gender.appendChild(document.createTextNode(person.getGender));
+        newPerson.appendChild(gender);
+
+        Element height = document.createElement("height");
+        height.appendChild(document.createTextNode(Integer.toString(person.getHeight())));
+        newPerson.appendChild(height);
+
+        Element weight = document.createElement("weight");
+        height.appendChild(document.createTextNode(Integer.toString(person.getWeight())));
+        newPerson.appendChild(weight);
+
 
         ArrayList<Person> person_list = new ArrayList<>();
 
         NodeList nList = document.getDocumentElement().getElementsByTagName("person");
-
-
-
 
     }
 }
