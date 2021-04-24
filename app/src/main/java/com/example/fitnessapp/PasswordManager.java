@@ -71,12 +71,11 @@ public class PasswordManager {
     public static boolean checkPassword(Context context, String username, String password) {
         int s = password.hashCode();
         String pass = Integer.toString(s);
-        System.out.println("made it");
         try {
             FileInputStream fis = null;
             InputStreamReader isr = null;
             String path = context.getFilesDir().getAbsolutePath();
-            fis = context.openFileInput(path + "/data.xml");
+            fis = context.openFileInput("data.xml");
             isr = new InputStreamReader(fis);
             char[] inputBuffer = new char[fis.available()];
             isr.read(inputBuffer);

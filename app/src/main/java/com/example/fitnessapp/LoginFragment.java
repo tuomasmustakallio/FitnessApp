@@ -72,8 +72,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     /*onClick for login button which checks if user exists and logs it in through the database*/
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void onClick(View v){
-        String path = context.getFilesDir().getAbsolutePath();
-        System.out.println(username);
         if (!checkLogin(context, username)){
             createNewAccount(context, username, password);
             Toast.makeText(getContext(), "Account created", Toast.LENGTH_SHORT).show();
@@ -86,8 +84,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             }*/
             //TODO PASSWORD CHECK REMOVED DURING TESTING
         }else if(checkPassword(context, username, password)){
-            Toast.makeText(getContext(), "Logged in", Toast.LENGTH_SHORT).show();
             //user login
+            Toast.makeText(getContext(), "Logged in", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(getContext(), "Invalid password", Toast.LENGTH_SHORT).show();
         }

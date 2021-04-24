@@ -3,7 +3,6 @@ package com.example.fitnessapp;
 import android.content.Context;
 import android.os.Build;
 import android.util.Xml;
-import android.widget.ArrayAdapter;
 
 import androidx.annotation.RequiresApi;
 
@@ -12,9 +11,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
 import org.xmlpull.v1.XmlSerializer;
 
 import java.io.ByteArrayInputStream;
@@ -25,79 +21,92 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.StringReader;
 import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
-import static android.content.Context.MODE_APPEND;
-import static android.content.Context.MODE_PRIVATE;
 import static com.example.fitnessapp.PasswordManager.hashPassword;
 
 public class DatabaseManager{
 
-
     public static void createNewAccount(Context context, String username, String password){
+        String path = context.getFilesDir().getAbsolutePath();
         int secrets = hashPassword(password);
         String pass = Integer.toString(secrets);
-        try {
-            File newXml = new File("data.xml");
-            if(newXml.exists()){
-                try{
-                    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-                    DocumentBuilder db = null;
-                    db = dbf.newDocumentBuilder();
-                    Document doc = db.parse("input.xml");
-                    NodeList people = doc.getElementsByTagName("people");
-                    people.item(0).appendChild(createPersonElement(doc,username, pass));
-                } catch (SAXException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }  catch (ParserConfigurationException e1) {
-                    e1.printStackTrace();
-                }
-            }else {
-                FileOutputStream fos = context.openFileOutput("data.xml", Context.MODE_PRIVATE);
-                XmlSerializer xmlSerializer = Xml.newSerializer();
-                StringWriter writer = new StringWriter();
-                xmlSerializer.setOutput(writer);
-                xmlSerializer.startDocument("UTF-8", true);
-                xmlSerializer.startTag(null, "people");
-                xmlSerializer.startTag(null, "person");
-                xmlSerializer.startTag(null, "username");
-                xmlSerializer.text(username);
-                xmlSerializer.endTag(null, "username");
-                xmlSerializer.startTag(null, "password");
-                xmlSerializer.text(pass);
-                xmlSerializer.endTag(null, "password");
-                xmlSerializer.endTag(null, "person");
-                xmlSerializer.endTag(null, "people");
-                xmlSerializer.endDocument();
-                xmlSerializer.flush();
-                String dataWrite = writer.toString();
-                fos.write(dataWrite.getBytes());
-                fos.close();
+        String xml = "data.xml";
+        File xmlFile = new File(path + "/data.xml");
+        FileOutputStream fos;
+        if(xmlFile.exists()) {
+            try {
+                DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+                Document doc = documentBuilder.parse(xmlFile);
+                Element root = doc.getDocumentElement();
+
+                Element newUser = doc.createElement("person");
+
+                Element nameElement = doc.createElement("username");
+                nameElement.appendChild(doc.createTextNode(username));
+
+                Element passElement = doc.createElement("password");
+                passElement.appendChild(doc.createTextNode(pass));
+
+                newUser.appendChild(nameElement);
+                newUser.appendChild(passElement);
+
+                DOMSource source = new DOMSource(doc);
+
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+                StreamResult result = new StreamResult(xmlFile);
+                transformer.transform(source, result);
+
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SAXException e) {
+                e.printStackTrace();
+            } catch (TransformerConfigurationException e) {
+                e.printStackTrace();
+            } catch (TransformerException e) {
+                e.printStackTrace();
             }
         }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-        catch (IllegalStateException e) {
-            e.printStackTrace();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
+        else{
+            try {
+                fos = context.openFileOutput(xml, Context.MODE_PRIVATE);
+                XmlSerializer serializer = Xml.newSerializer();
+                serializer.setOutput(fos, "UTF-8");
+                serializer.startDocument(null, Boolean.valueOf(true));
+                serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
+                serializer.startTag(null, "people");
+                serializer.startTag(null, "person");
+                serializer.startTag(null, "username");
+                serializer.text(username);
+                serializer.endTag(null, "username");
+                serializer.startTag(null, "password");
+                serializer.text(pass);
+                serializer.endTag(null, "password");
+                serializer.endTag(null, "person");
+                serializer.endTag(null, "people");
+                serializer.endDocument();
+                serializer.flush();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -144,18 +153,6 @@ public class DatabaseManager{
             e.printStackTrace();
         }
         return false;
-    }
-    private static Element createPersonElement(Document doc, String username, String password) {
-        Element el = doc.createElement("person");
-        el.appendChild(createPersonDetailElement(doc, "username", username));
-        el.appendChild(createPersonDetailElement(doc, "password", password));
-        return el;
-    }
-
-    private static Element createPersonDetailElement(Document doc, String name, String value) {
-        Element el = doc.createElement(name);
-        el.appendChild(doc.createTextNode(value));
-        return el;
     }
 }
 
