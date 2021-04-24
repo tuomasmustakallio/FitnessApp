@@ -2,6 +2,7 @@ package com.example.fitnessapp;
 
 import android.content.Context;
 import android.os.Build;
+import android.os.Bundle;
 import android.util.Xml;
 
 import androidx.annotation.RequiresApi;
@@ -152,6 +153,14 @@ public class DatabaseManager{
         } catch (SAXException e) {
             e.printStackTrace();
         }
+
+        /*Send info to DataInputFragment*/
+        Bundle bundle = new Bundle();
+        bundle.putString("key", "value");
+        DataInputFragment dataInputFragment = new DataInputFragment();
+        dataInputFragment.setArguments(bundle);
+        //
+
         return false;
     }
 }
