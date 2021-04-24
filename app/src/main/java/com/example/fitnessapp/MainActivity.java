@@ -24,6 +24,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //TODO USER LOGGED IN STUFF
+            //TODO SETS HEADER TEXT TO USERNAME
+            /*NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                View headerView = navigationView.getHeaderView(0);
+                TextView navUsername = (TextView) headerView.findViewById(R.id.headerUserName);
+                navUsername.setText(username);*/
+        //TODO USER LOGGED IN STUFF
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
