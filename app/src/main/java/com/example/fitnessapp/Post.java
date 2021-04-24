@@ -2,6 +2,7 @@ package com.example.fitnessapp;
 
 import com.google.gson.annotations.SerializedName;
 
+// Makes class for the API
 public class Post {
 
     private int userId;
