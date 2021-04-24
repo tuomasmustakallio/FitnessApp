@@ -7,12 +7,16 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+
+    DataInputFragment dataInputFragment = new DataInputFragment();
 
     /*Creates the nav view to MainActivity and sets the starting fragment to the LoginFragment*/
     @Override
@@ -46,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LoginFragment()).commit();
                 break;
             case R.id.nav_account:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DataInputFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dataInputFragment).commit();
                 break;
             case R.id.nav_input:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WeightStatisticsfragment()).commit();
@@ -70,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
 
 
 }

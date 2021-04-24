@@ -98,6 +98,12 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
             }@Override public void afterTextChanged(Editable s) {}
         });
 
+        /*Receive info from DatabaseManager (In progress)*/
+        try {
+            String arg = getArguments().getString("username");
+            System.out.println(arg);
+        }   catch (Exception e){
+        }
 
 
     }
