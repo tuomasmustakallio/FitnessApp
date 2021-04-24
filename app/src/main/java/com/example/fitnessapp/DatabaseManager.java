@@ -114,16 +114,68 @@ public class DatabaseManager{
         }
     }
 
-    public static void setUserInfo(){
+    public static void setUserInfo(Context context, Person person, String username){
+
+        String path = context.getFilesDir().getAbsolutePath();
+        File xmlFile = new File(path + "/data.xml");
+
+        try{
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document doc = documentBuilder.parse(xmlFile);
+            NodeList nList = doc.getDocumentElement().getElementsByTagName("person");
+
+            for (int i = 0; i < nList.getLength(); i++) {
+                Node node = nList.item(i);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element user = (Element) node;
+                    if (user.getElementsByTagName("username").item(0).getTextContent().equals(username)) {
+                        Element age = doc.createElement("age");
+                        age.appendChild(doc.createTextNode(person.getAge()));
+                        user.appendChild(age);
+
+                        Element gender = doc.createElement("gender");
+                        gender.appendChild(doc.createTextNode(person.getGender()));
+                        user.appendChild(gender);
+
+                        Element height = doc.createElement("height");
+                        height.appendChild(doc.createTextNode(person.getHeight()));
+                        user.appendChild(height);
+
+                        Element weight = doc.createElement("weight");
+                        height.appendChild(doc.createTextNode(person.getWeight()));
+                        user.appendChild(weight);
+
+                        DOMSource source = new DOMSource(doc);
+
+                        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                        Transformer transformer = transformerFactory.newTransformer();
+                        StreamResult result = new StreamResult(xmlFile);
+                        transformer.transform(source, result);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        }
     }
 
     /*Checks if user exists in user database data.xml*/
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static boolean checkLogin(Context context, String username) {
+        String path = context.getFilesDir().getAbsolutePath();
         try {
             FileInputStream fis = null;
             InputStreamReader isr = null;
-            fis = context.openFileInput("data.xml");
+            fis = context.openFileInput(path + "data.xml");
             isr = new InputStreamReader(fis);
             char[] inputBuffer = new char[fis.available()];
             isr.read(inputBuffer);
