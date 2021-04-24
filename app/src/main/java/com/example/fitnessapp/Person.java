@@ -1,25 +1,24 @@
 package com.example.fitnessapp;
 
-public class Person {
+public class Person  {
 
     String username;
     String password;
-    int age = 0;
+    String age = "";
     String gender = "";
-    int height = 0;
-    int weight = 0;
+    String height = "";
+    String weight = "";
 
 
     public Person(){
 
     }
 
-    public Person(int age, String gender, int height, int weight){
+    public Person(String age, String gender, String height, String weight){
         this.age = age;
         this.gender = gender;
         this.height = height;
         this.weight = weight;
-
     }
 
     public String getPassword(){
@@ -34,11 +33,11 @@ public class Person {
         this.username = username;
     }
 
-    public int getAge(){
+    public String getAge(){
             return age;
     }
 
-    public void setAge(int age){
+    public void setAge(String age){
             this.age = age;
     }
 
@@ -50,21 +49,19 @@ public class Person {
             this.gender = gender;
     }
 
-    public int getHeight(){
+    public String getHeight(){
             return height;
     }
 
-    public void setHeight(int height){
+    public void setHeight(String height){
             this.height = height;
     }
 
-    public int getWeight(){
+    public String getWeight(){
         return weight;
     }
 
-    public void setWeight(int weight){
-        this.weight = weight;
-    }
+    public void setWeight(String weight){ this.weight = weight; }
 
 
 }
