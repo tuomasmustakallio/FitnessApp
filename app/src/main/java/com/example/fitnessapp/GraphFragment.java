@@ -25,13 +25,13 @@ public class GraphFragment extends Fragment {
         double y,x;
         x=-0.5;
         View view = inflater.inflate(R.layout.graph_layout, container, false);
-        GraphView graph = (GraphView) view.findViewById(R.id.graph);
-        for(int i = 0; i<500; i++ ){
-            x=x+0.1;
-            y= Math.sin(x);
-            series1.appendData(new DataPoint(x, y), true, 500);
-        }
-        graph.addSeries(series1);
+        GraphView graph = (GraphView) getView().findViewById(R.id.graph);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3)
+        });
+        graph.addSeries(series);
         return view;
     }
 
