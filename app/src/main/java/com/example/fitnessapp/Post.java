@@ -6,11 +6,13 @@ import com.google.gson.annotations.SerializedName;
 public class Post {
 
     @SerializedName("body")
+    private String quetes;
 
     private String text;
 
+    private String author;
 
     public String getText() { return text; }
 
-
+    public String getAuthor() { return author; }
 }
