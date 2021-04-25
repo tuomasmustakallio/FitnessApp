@@ -33,15 +33,11 @@ public class GraphFragment extends Fragment {
                 new DataPoint(4, 6)
         });
         graph.addSeries(series);
-
-        return inflater.inflate(R.layout.login_layout, container, false);
-
-
+        return view;
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
     }
 }

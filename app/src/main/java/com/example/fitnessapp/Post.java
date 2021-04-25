@@ -5,20 +5,14 @@ import com.google.gson.annotations.SerializedName;
 // Makes class for the API
 public class Post {
 
-    private int userId;
-
-    private int id;
-
-    private String title;
-
     @SerializedName("body")
+    private String quetes;
+
     private String text;
 
-    public int getUserId() { return userId; }
-
-    public int getId() { return id; }
-
-    public String getTitle() { return title; }
+    private String author;
 
     public String getText() { return text; }
+
+    public String getAuthor() { return author; }
 }

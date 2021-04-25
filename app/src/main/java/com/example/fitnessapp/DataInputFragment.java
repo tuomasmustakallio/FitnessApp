@@ -120,7 +120,7 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
         //EXECUTE GET REQUEST
         Retrofit retrofit = new Retrofit.Builder()
                 //METHOD TO GET BASE  URL
-                .baseUrl("https://jsonplaceholder.typicode.com/")
+                .baseUrl("https://type.fit/api/")
                 //DEFINE GSON USAGE
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -144,10 +144,8 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
 
                 for (Post post : posts){
                     String content = "";
-                    content += "ID: " + post.getId() + "\n";
-                    content += "User ID: " + post.getUserId() + "\n";
-                    content += "Title: " + post.getTitle() + "\n";
                     content += "Text: " + post.getText() + "\n";
+                    content += "Author: " + post.getAuthor() + "\n";
 
                     textViewResult.append(content);
                 }
