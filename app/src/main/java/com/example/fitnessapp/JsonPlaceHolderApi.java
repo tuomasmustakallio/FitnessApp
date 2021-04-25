@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 
 public interface JsonPlaceHolderApi {
     //API KEY
-    @GET("quotes")
+    @GET("random-quote")
     //METHOD TO EXECUTE GET REQUEST
     Call<List<Post>> getPosts();
 }
