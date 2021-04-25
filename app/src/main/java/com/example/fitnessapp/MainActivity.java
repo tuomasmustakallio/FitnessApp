@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //TODO ADD PROGRESS INPUT
                 break;
             case R.id.nav_output:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DataInputFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new GraphFragment()).commit();
                 //TODO ADD SHOW DATA
                 break;
         }
