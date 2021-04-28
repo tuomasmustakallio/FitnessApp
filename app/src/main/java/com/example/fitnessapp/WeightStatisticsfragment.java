@@ -44,7 +44,7 @@ public class WeightStatisticsfragment extends Fragment {
         submitButton.setOnClickListener(this::onClick);
 
         Movement squats = new Movement();
-        squats.setMovementName("Squats");
+        squats.setMovementName("Squat");
         Movement benchPress = new Movement();
         benchPress.setMovementName("Bench Press");
         Movement deadLift = new Movement();

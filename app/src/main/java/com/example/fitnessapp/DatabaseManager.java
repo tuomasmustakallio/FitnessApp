@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Xml;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.RequiresApi;
 
@@ -25,6 +26,7 @@ import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -253,6 +255,56 @@ public class DatabaseManager{
         } catch (TransformerException e) {
             e.printStackTrace();
         }
+    }
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static String getResults(Context context, String username, String movement){
+        String results = "";
+        try{
+            FileInputStream fis = null;
+            InputStreamReader isr = null;
+            fis = context.openFileInput( "data.xml");
+            isr = new InputStreamReader(fis);
+            char[] inputBuffer = new char[fis.available()];
+            isr.read(inputBuffer);
+            String data = new String(inputBuffer);
+            isr.close();
+            fis.close();
+            InputStream is = new ByteArrayInputStream(data.getBytes(StandardCharsets.UTF_8));
+            ArrayList<String> xmlDataList = new ArrayList<String>();
+            DocumentBuilderFactory dbf;
+            DocumentBuilder db;
+            NodeList items = null;
+            Document dom;
+            dbf = DocumentBuilderFactory.newInstance();
+            db = dbf.newDocumentBuilder();
+            dom = db.parse(is);
+            dom.getDocumentElement().normalize();
+            NodeList nList = dom.getDocumentElement().getElementsByTagName("person");
+            for (int i = 0; i < nList.getLength(); i++){
+                Node node = nList.item(i);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element element = (Element) node;
+                    if (element.getElementsByTagName("username").item(0).getTextContent().equals(username)) {
+                        NodeList newList = element.getElementsByTagName(movement);
+                        for (int e = 0; e < newList.getLength(); e++) {
+                            Node newNode = newList.item(e);
+                            String add = newNode.getTextContent();
+
+                            results = results + "/" + add;
+                        }
+                    }
+                }
+            }
+        }catch  (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+        return results;
     }
 }
 

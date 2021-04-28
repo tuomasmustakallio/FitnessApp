@@ -10,4 +10,40 @@
         android:layout_width="match_parent"
         android:layout_height="400dp" />
 
+    <LinearLayout
+        android:id="@+id/buttonWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="222dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Squat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
+            android:text="Squat" />
+
+        <Button
+            android:id="@+id/Bench_Press"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_weight="1"
+            android:text="Bench Press" />
+
+        <Button
+            android:id="@+id/Deadlift"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_weight="1"
+            android:text="Deadlift" />
+    </LinearLayout>
+
 </RelativeLayout>
