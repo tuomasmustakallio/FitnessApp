@@ -143,8 +143,8 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
 
                 for (Post post : posts){
                     String content = "";
-                    content += "Text: " + post.getText() + "\n";
-                    content += "Author: " + post.getAuthor() + "\n";
+                    content += post.getText() + "\n";
+                    content += "Author: " + post.getAuthor() + "\n\n\n";
 
                     textViewResult.append(content);
                 }
