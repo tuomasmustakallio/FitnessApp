@@ -74,16 +74,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void onClick(View v){
         if (!checkLogin(context, username)){
-            createNewAccount(context, username, password);
-            Toast.makeText(getContext(), "Account created", Toast.LENGTH_SHORT).show();
-
-            /*if (passwordRules(password)){
-                createNewAccount(username, password);
+            if (passwordRules(password)){
+                createNewAccount(context, username, password);
                 Toast.makeText(getContext(), "Account created", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(getContext(), "Bad password", Toast.LENGTH_SHORT).show();
-            }*/
-            //TODO PASSWORD CHECK REMOVED DURING TESTING
+            }
         }else if(checkPassword(context, username, password)){
             //user login
             Toast.makeText(getContext(), "Logged in", Toast.LENGTH_SHORT).show();
