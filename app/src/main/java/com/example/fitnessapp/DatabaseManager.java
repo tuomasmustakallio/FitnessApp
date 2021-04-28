@@ -212,6 +212,48 @@ public class DatabaseManager{
         }
         return false;
     }
+    public static void setResults(Context context, Movement movement, String username){
+        username = "eka";
+        String path = context.getFilesDir().getAbsolutePath();
+        File xmlFile = new File(path + "/data.xml");
+
+        try{
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document doc = documentBuilder.parse(xmlFile);
+            NodeList nList = doc.getDocumentElement().getElementsByTagName("person");
+
+            for (int i = 0; i < nList.getLength(); i++) {
+                Node node = nList.item(i);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element user = (Element) node;
+                    if (user.getElementsByTagName("username").item(0).getTextContent().equals(username)) {
+
+                        Element move = doc.createElement(movement.getMovementName());
+                        move.appendChild(doc.createTextNode(movement.getWeight()+":"+movement.getReps()));
+                        user.appendChild(move);
+
+                        DOMSource source = new DOMSource(doc);
+
+                        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                        Transformer transformer = transformerFactory.newTransformer();
+                        StreamResult result = new StreamResult(xmlFile);
+                        transformer.transform(source, result);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
