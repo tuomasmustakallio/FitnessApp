@@ -31,10 +31,13 @@ public class GraphFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        LineChart mpLineChart;
+        return inflater.inflate(R.layout.graph_layout, container, false);
+    }
 
-        View view = inflater.inflate(R.layout.graph_layout, container, false);
-        mpLineChart=(LineChart) getView().findViewById(R.id.line_chart);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        LineChart mpLineChart;
+        mpLineChart = (LineChart) getView().findViewById(R.id.line_chart);
         LineDataSet lineDataSet1 = new LineDataSet(dataValues1(),"Data Set 1");
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet1);
@@ -42,8 +45,6 @@ public class GraphFragment extends Fragment {
         LineData data = new LineData(dataSets);
         mpLineChart.setData(data);
         mpLineChart.invalidate();
-
-        return view;
     }
 
     private ArrayList<Entry> dataValues1(){
@@ -55,10 +56,5 @@ public class GraphFragment extends Fragment {
         dataVals.add(new Entry(4,28));
 
         return dataVals;
-    }
-
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
     }
 }
