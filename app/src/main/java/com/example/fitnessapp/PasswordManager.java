@@ -39,7 +39,7 @@ public class PasswordManager {
         Pattern special= Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Matcher matcher = special.matcher(password);
         boolean hasSymbols = matcher.find();
-        if (password.length()< 12) {
+        if (password.length()> 12) {
             overTwelve = true;
         }
         for (int i = 0; i < password.length(); i++) {

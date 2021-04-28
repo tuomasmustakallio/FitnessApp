@@ -67,7 +67,6 @@ public class GraphFragment extends Fragment {
         Squat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = "eka";
                 String movement = "Squat";
                 String results = getResults(context, username, movement);
                 int weight, reps;
@@ -91,7 +90,6 @@ public class GraphFragment extends Fragment {
         Bench_Press.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = "eka";
                 String movement = "Bench Press";
                 String results = getResults(context, username, movement);
                 int weight, reps;
@@ -113,7 +111,6 @@ public class GraphFragment extends Fragment {
         Deadlift.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = "eka";
                 String movement = "Deadlift";
                 String results = getResults(context, username, movement);
                 int weight, reps;
