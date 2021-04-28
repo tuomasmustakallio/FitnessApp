@@ -118,7 +118,6 @@ public class DatabaseManager{
 
     /*comment here*/
     public static void setUserInfo(Context context, Person person, String username){
-        username = "eka";
         String path = context.getFilesDir().getAbsolutePath();
         File xmlFile = new File(path + "/data.xml");
 
@@ -215,7 +214,6 @@ public class DatabaseManager{
         return false;
     }
     public static void setResults(Context context, Movement movement, String username){
-        username = "eka";
         String path = context.getFilesDir().getAbsolutePath();
         File xmlFile = new File(path + "/data.xml");
 
