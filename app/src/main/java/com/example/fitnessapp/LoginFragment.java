@@ -88,7 +88,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             Toast.makeText(getContext(), "Logged in", Toast.LENGTH_SHORT).show();
             /*Send info to DataInputFragment*/
             Bundle bundle = new Bundle();
-            bundle.putString(username, null);
+            bundle.putString("key", username);
             DataInputFragment dataInputFragment = new DataInputFragment();
             dataInputFragment.setArguments(bundle);
         }else{

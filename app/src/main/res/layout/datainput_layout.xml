@@ -151,7 +151,7 @@
             android:layout_height="wrap_content"
             android:text="Get Inspired!\n\n"
             android:textColor="#FFFFFF"
-            android:textStyle="bold|italic"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.453"

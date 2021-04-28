@@ -52,13 +52,16 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
     String age,gender,height,weight, username;
     int i=0;
 
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         context = container.getContext();
 
         /*Receive info from DatabaseManager (In progress)*/
-        username = getArguments().getString("username");
+        Bundle bundle = this.getArguments();
+        username = bundle.getString("key");
         System.out.println(username);
 
 

@@ -61,12 +61,73 @@ public class GraphFragment extends Fragment {
         mpLineChart.invalidate();
 
         Button Squat = getView().findViewById(R.id.Squat);
-        Squat.setOnClickListener(this::Squat);
+        Squat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = "eka";
+                String movement = "Squat";
+                String results = getResults(context, username, movement);
+                int weight, reps;
+                String[] arrOfStr = results.split("/");
+                for (String a : arrOfStr){
+                    if(!a.equals("")){
+                        String [] arrOfA = a.split(":");
+                        weight = parseInt(arrOfA[0]);
+                        reps = parseInt(arrOfA[1]);
+                        squatVals.add(new Entry(weight,reps));
+                    }
+                }
+                LineDataSet squatData = new LineDataSet(squatVals,"Squat data");
+                dataSets.set(0, squatData);
+                LineData data = new LineData(dataSets);
+                mpLineChart.setData(data);
+                mpLineChart.invalidate();
+            }
+        });
         Button Bench_Press = getView().findViewById(R.id.Bench_Press);
-        Bench_Press.setOnClickListener(this::Bench_Press);
+        Bench_Press.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = "eka";
+                String movement = "Bench Press";
+                String results = getResults(context, username, movement);
+                int weight, reps;
+                String[] arrOfStr = results.split("/");
+                for (String a : arrOfStr){
+                    String [] arrOfA = a.split(":");
+                    weight = parseInt(arrOfA[0]);
+                    reps = parseInt(arrOfA[1]);
+                    benchpressVals.add(new Entry(weight,reps));
+                }
+                LineDataSet bpData = new LineDataSet(benchpressVals,"Bench Press data");
+                dataSets.set(0, bpData);
+                LineData data = new LineData(dataSets);
+                mpLineChart.setData(data);
+                mpLineChart.invalidate();
+            }
+        });
         Button Deadlift = getView().findViewById(R.id.Deadlift);
-        Deadlift.setOnClickListener(this::Deadlift);
-
+        Deadlift.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = "eka";
+                String movement = "Deadlift";
+                String results = getResults(context, username, movement);
+                int weight, reps;
+                String[] arrOfStr = results.split("/");
+                for (String a : arrOfStr){
+                    String [] arrOfA = a.split(":");
+                    weight = parseInt(arrOfA[0]);
+                    reps = parseInt(arrOfA[1]);
+                    deadliftVals.add(new Entry(weight,reps));
+                }
+                LineDataSet dlData = new LineDataSet(deadliftVals,"Bench Press data");
+                dataSets.set(0, dlData);
+                LineData data = new LineData(dataSets);
+                mpLineChart.setData(data);
+                mpLineChart.invalidate();
+            }
+        });
     }
 
     private ArrayList<Entry> dataValues1(){
@@ -78,56 +139,5 @@ public class GraphFragment extends Fragment {
         dataVals.add(new Entry(4,28));
 
         return dataVals;
-    }
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void Squat(View v){
-        String username = "eka";
-        String movement = "Squat";
-        String results = getResults(context, username, movement);
-        int weight, reps;
-        String[] arrOfStr = results.split("/");
-        for (String a : arrOfStr){
-            if(!a.equals("")){
-                String [] arrOfA = a.split(":");
-                weight = parseInt(arrOfA[0]);
-                reps = parseInt(arrOfA[1]);
-                squatVals.add(new Entry(weight,reps));
-            }
-        }
-        LineDataSet squatData = new LineDataSet(squatVals,"Squat data");
-        dataSets.add(squatData);
-        LineData data = new LineData(dataSets);
-        mpLineChart.setData(data);
-        mpLineChart.invalidate();
-
-    }
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void Bench_Press(View v){
-        String username = "eka";
-        String movement = "Bench Press";
-        String results = getResults(context, username, movement);
-        int weight, reps;
-        String[] arrOfStr = results.split("/");
-        for (String a : arrOfStr){
-            String [] arrOfA = a.split(":");
-            weight = parseInt(arrOfA[0]);
-            reps = parseInt(arrOfA[1]);
-            benchpressVals.add(new Entry(weight,reps));
-        }
-
-    }
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void Deadlift(View v){
-        String username = "eka";
-        String movement = "Deadlift";
-        String results = getResults(context, username, movement);
-        int weight, reps;
-        String[] arrOfStr = results.split("/");
-        for (String a : arrOfStr){
-            String [] arrOfA = a.split(":");
-            weight = parseInt(arrOfA[0]);
-            reps = parseInt(arrOfA[1]);
-            deadliftVals.add(new Entry(weight,reps));
-        }
     }
 }
