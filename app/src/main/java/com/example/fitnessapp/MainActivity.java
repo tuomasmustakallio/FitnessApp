@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     DataInputFragment dataInputFragment = new DataInputFragment();
+    GraphFragment graphFragment = new GraphFragment();
 
     /*Creates the nav view to MainActivity and sets the starting fragment to the LoginFragment*/
     @Override

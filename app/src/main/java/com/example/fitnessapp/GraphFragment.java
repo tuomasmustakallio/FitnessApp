@@ -25,14 +25,15 @@ import java.util.Map;
 
 public class GraphFragment extends Fragment {
 
-    LineChart mpLineChart;
 
 
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        LineChart mpLineChart;
 
+        View view = inflater.inflate(R.layout.graph_layout, container, false);
         mpLineChart=(LineChart) getView().findViewById(R.id.line_chart);
         LineDataSet lineDataSet1 = new LineDataSet(dataValues1(),"Data Set 1");
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
@@ -42,7 +43,7 @@ public class GraphFragment extends Fragment {
         mpLineChart.setData(data);
         mpLineChart.invalidate();
 
-        return inflater.inflate(R.layout.login_layout, container, false);
+        return view;
     }
 
     private ArrayList<Entry> dataValues1(){
