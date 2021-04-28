@@ -1,6 +1,7 @@
 package com.example.fitnessapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -87,10 +88,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             //user login
             Toast.makeText(getContext(), "Logged in", Toast.LENGTH_SHORT).show();
             /*Send info to DataInputFragment*/
-            Bundle bundle = new Bundle();
-            bundle.putString("key", username);
-            DataInputFragment dataInputFragment = new DataInputFragment();
-            dataInputFragment.setArguments(bundle);
+            Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
+            intent.putExtra("username", username);
+            getActivity().startActivity(intent);
         }else{
             Toast.makeText(getContext(), "Invalid password", Toast.LENGTH_SHORT).show();
         }

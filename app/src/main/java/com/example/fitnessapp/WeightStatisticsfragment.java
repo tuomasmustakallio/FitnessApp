@@ -32,8 +32,11 @@ public class WeightStatisticsfragment extends Fragment {
     String typedWeight,typedReps = "0";
     Movement selectedMovement, saveMovement;
     String selectedMovementName;
+    String username;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        /*Receive info from DatabaseManager (In progress)*/
+        username = getArguments().getString("username");
         context = container.getContext();
         return inflater.inflate(R.layout.weightstatistics_layout, container, false);
     }
@@ -103,7 +106,7 @@ public class WeightStatisticsfragment extends Fragment {
         int weight=Integer.parseInt(typedWeight);
         int reps=Integer.parseInt(typedReps);
         Movement saveMovement = new Movement(selectedMovementName, weight, reps);
-        setResults(context, saveMovement, "eka");
+        setResults(context, saveMovement, username);
         Toast.makeText(getContext(), "Results saved", Toast.LENGTH_SHORT).show();
     }
 }

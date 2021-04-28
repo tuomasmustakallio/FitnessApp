@@ -40,9 +40,12 @@ public class GraphFragment extends Fragment {
     ArrayList<Entry> benchpressVals = new ArrayList<Entry>();
     ArrayList<Entry> deadliftVals = new ArrayList<Entry>();
     ArrayList<ILineDataSet> dataSets;
+    String username;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        /*Receive info from DatabaseManager (In progress)*/
+        username = getArguments().getString("username");
         context = container.getContext();
         return inflater.inflate(R.layout.graph_layout, container, false);
     }

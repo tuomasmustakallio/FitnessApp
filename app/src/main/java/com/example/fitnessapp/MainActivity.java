@@ -5,6 +5,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -14,7 +16,8 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
-
+    Bundle bundle;
+    String username;
 
     DataInputFragment dataInputFragment = new DataInputFragment();
     GraphFragment graphFragment = new GraphFragment();
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         //TODO USER LOGGED IN STUFF
             //TODO SETS HEADER TEXT TO USERNAME
@@ -52,19 +57,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     /*Changes the fragment depending on what nav option selected*/
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        Bundle bundle = new Bundle();
+        bundle.putString("username", username);
         switch (item.getItemId()) {
             case R.id.nav_login:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LoginFragment()).commit();
                 break;
             case R.id.nav_account:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dataInputFragment).commit();
+                DataInputFragment datainput = new DataInputFragment();
+                datainput.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, datainput).commit();
                 break;
             case R.id.nav_input:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WeightStatisticsfragment()).commit();
+                WeightStatisticsfragment resultinput = new WeightStatisticsfragment();
+                resultinput.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, resultinput).commit();
                 //TODO ADD PROGRESS INPUT
                 break;
             case R.id.nav_output:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new GraphFragment()).commit();
+                GraphFragment resultshow = new GraphFragment();
+                resultshow.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, resultshow).commit();
                 //TODO ADD SHOW DATA
                 break;
         }

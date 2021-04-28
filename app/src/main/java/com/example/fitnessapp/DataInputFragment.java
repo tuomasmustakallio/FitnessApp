@@ -60,9 +60,7 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
         context = container.getContext();
 
         /*Receive info from DatabaseManager (In progress)*/
-        /*Bundle bundle = this.getArguments();
-        username = bundle.getString("key");
-        System.out.println(username);*/
+        String username = getArguments().getString("username");
 
 
         return inflater.inflate(R.layout.datainput_layout, container, false);
