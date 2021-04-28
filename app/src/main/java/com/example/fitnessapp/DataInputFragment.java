@@ -56,6 +56,12 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         context = container.getContext();
+
+        /*Receive info from DatabaseManager (In progress)*/
+        username = getArguments().getString("username");
+        System.out.println(username);
+
+
         return inflater.inflate(R.layout.datainput_layout, container, false);
 
     }
@@ -107,13 +113,6 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
             }@Override public void afterTextChanged(Editable s) {}
         });
 
-        /*Receive info from DatabaseManager (In progress)*/
-        try {
-            username = getArguments().getString("username", null);
-            System.out.println(username);
-        }   catch (Exception e){
-            System.out.println("ei saatu");
-        }
 
         TextView textViewResult = getView().findViewById(R.id.text_view_result);
 
