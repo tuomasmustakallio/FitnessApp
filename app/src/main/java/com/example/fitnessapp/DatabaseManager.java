@@ -116,7 +116,7 @@ public class DatabaseManager{
 
     /*comment here*/
     public static void setUserInfo(Context context, Person person, String username){
-        username = "joo";
+        username = "eka";
         String path = context.getFilesDir().getAbsolutePath();
         File xmlFile = new File(path + "/data.xml");
 

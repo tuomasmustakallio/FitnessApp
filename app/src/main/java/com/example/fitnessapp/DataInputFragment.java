@@ -152,7 +152,7 @@ public class DataInputFragment extends Fragment implements View.OnClickListener 
             }
             @Override
             public void onFailure(Call<List<Post>> call, Throwable t) {
-
+                textViewResult.setText("Network Error :: " + t.getLocalizedMessage());
             }
         });
     }
